@@ -1,0 +1,119 @@
+﻿<Window x:Class="ShoeStore_Topoev.AddEditTovarWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShoeStore_Topoev"
+        mc:Ignorable="d"
+        Title="Добавление/редактирование товаров" Height="500" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Border Grid.Row="0" Background="#7FFF00" Padding="10" Margin="10">
+            <TextBlock Text="Управление товаром" FontSize="22" 
+                           HorizontalAlignment="Center" FontFamily="Times New Roman"/>
+        </Border>
+
+        <Grid Grid.Row="1" Margin="20,10,20,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="ID товара:"
+                       VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="txbID"
+                       IsReadOnly="True" Margin="0,5"
+                       Background="LightGray"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Фото товара:"
+                       VerticalAlignment="Center" Margin="0,5"/>
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="0,5">
+                <Image x:Name="ImgPhoto" Width="120" Height="50" Stretch="Uniform"
+                       Source="C:\Users\User\Desktop\4 курс_1 семестр_Работа 2\picture.png"/>
+                <Button Content="Выбрать изображение"
+                        Click="SelectedImageBtn_Click"
+                        Margin="10,0" Width="140" Height="20"/>
+                <TextBlock x:Name="tbPhotoPath" VerticalAlignment="Center"
+                           Margin="10,0" TextWrapping="Wrap" MaxWidth="250"/>
+            </StackPanel>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Наименование товара:"
+                       VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Article}"
+                     Margin="0,5"/>
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Категория товара:"
+                       VerticalAlignment="Center" Margin="0,5"/>
+            <ComboBox Grid.Row="3" Grid.Column="1" x:Name="cmbGender"
+                      SelectedValuePath="GenderID"
+                      DisplayMemberPath="GenderName"
+                      SelectedValue="{Binding GenderID}"
+                      Margin="0,5"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Описание товара:"
+                       VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Description}"
+                     Margin="0,5" Height="60"
+                     TextWrapping="Wrap" AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Auto"/>
+            
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Производитель товара:"
+            VerticalAlignment="Center" Margin="0,5"/>
+            <ComboBox Grid.Row="5" Grid.Column="1" x:Name="cmbManufacturer"
+                      SelectedValuePath="ManufacturerID"
+                      DisplayMemberPath="ManufacturerName"
+                      SelectedValue="{Binding ManufacturerID}"
+                      Margin="0,5"/>
+
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Поставщик товара:"
+            VerticalAlignment="Center" Margin="0,5"/>
+            <ComboBox Grid.Row="6" Grid.Column="1" x:Name="cmbSupplier"
+            SelectedValuePath="SupplierID"
+            DisplayMemberPath="SupplierName"
+            SelectedValue="{Binding SupplierID}"
+            Margin="0,5"/>
+
+            <TextBlock Grid.Row="7" Grid.Column="0" Text="Цена товара:"
+            VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Price}"
+            Margin="0,5" PreviewTextInput="NumberValidation"/>
+
+            <TextBlock Grid.Row="8" Grid.Column="0" Text="Единица измерения товара:"
+            VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding UnitOfMeasurement}"
+            Margin="0,5"/>
+
+            <TextBlock Grid.Row="9" Grid.Column="0" Text="Количество товара на складе:"
+            VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding QuantityInStock}"
+            Margin="0,5" PreviewTextInput="NumberValidation"/>
+
+            <TextBlock Grid.Row="10" Grid.Column="0" Text="Действующая скидка:"
+            VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding CurrentDiscount}"
+            Margin="0,5" PreviewTextInput="NumberValidation"/>
+        </Grid>
+        <Button Grid.Row="2" Content="Сохранить данные"
+                Click="saveBtn_Click"
+                Padding="20,10" Margin="0,10,0,20"
+                HorizontalAlignment="Center"/>
+    </Grid>
+</Window>
